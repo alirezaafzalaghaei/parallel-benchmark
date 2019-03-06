@@ -24,7 +24,7 @@ rm results 2> /dev/null
 
 generate_omp(){
     source="main_omp.cpp"
-    tmp=`cp main_omp.tmp $source`
+    tmp=`cp main_omp.c $source`
     
     n_matrix=$1
 
@@ -41,7 +41,7 @@ generate_omp(){
 
 generate_arma(){
     source="main_arma.cpp"
-    tmp=`cp main_arma.tmp $source`
+    tmp=`cp main_arma.c $source`
 
     n_matrix=$1
 

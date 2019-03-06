@@ -34,18 +34,21 @@ with open(sys.argv[1]) as results:
         ax1.plot(*zip(*res), '.-', label=NAMES[i], markersize=14)
 
     ax1.legend()
-
-    efficiency = [v[0] / v[1] if v[0] >= v[1] else -v[1] / v[0] for v in processed.values()]
+    ax1.set_title('time')
+    ax1.set_ylabel('second')
+    #ax1.set_xticks(list(processed.keys()))
+    speedup = [v[0] / v[1] if v[0] >= v[1] else -v[1] / v[0] for v in processed.values()]
     x = list(map(str, map(int, processed.keys())))
 
     ax2.bar(
-        x, efficiency, width=0.5, color=(0.2, 0.3, 0.1, 0.3), edgecolor='blue')
+        x, speedup, width=0.5, color=(0.2, 0.3, 0.1, 0.3), edgecolor='blue')
 
-    for i, eff in enumerate(efficiency):
+    for i, spdup in enumerate(speedup):
 
         ax2.annotate(
-            round(eff, 1) if eff>=0 else round(eff), xy=(x[i], eff), xytext=(i - .15, eff + 0.04))
+            round(spdup, 1) if spdup>=0 else round(spdup), xy=(x[i], spdup), xytext=(i - .15, spdup + 0.04))
     a = ax2.get_yticks().tolist()
     a.append(a[-1]+(a[-1]-a[-2]))
     ax2.set_yticks(a)
+    ax2.set_title('speedup')
     plt.show()
