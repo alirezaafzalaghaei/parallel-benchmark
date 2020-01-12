@@ -1,3 +1,4 @@
+# Array maximum finder
 - compile with
 
       nvcc  main.cpp
