@@ -1,3 +1,4 @@
+# Array maximum finder
 - Compile with
 
       mpic++  main.cpp
